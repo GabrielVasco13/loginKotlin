@@ -17,6 +17,6 @@ fun homeScreen(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        Text("Logged in successfully!", textAlign = TextAlign.Center, textDecoration = TextDecoration.Underline)
+        Text("Parabéns, você logou! Agora, o que você vai fazer em uma tela branca?", textAlign = TextAlign.Center)
     }
 }

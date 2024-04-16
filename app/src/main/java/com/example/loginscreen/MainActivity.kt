@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
 
             NavHost(navController = navController, startDestination = "signInScreen") {
                 composable("signInScreen") { SignInScreen(navController) }
-                composable("loginScreen") { LoginScreen(navController) } // Replace with your second screen
-                composable("homeScreen") { homeScreen() } // Replace with your third screen
+                composable("loginScreen") { LoginScreen(navController) }
+                composable("homeScreen") { homeScreen() }
             }
         }
     }

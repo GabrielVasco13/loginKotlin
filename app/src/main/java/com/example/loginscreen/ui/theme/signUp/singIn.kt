@@ -1,10 +1,12 @@
 package com.example.loginscreen.ui.theme.signUp
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
@@ -26,15 +28,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.loginscreen.widget.AnimatedSnackbar
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 
+@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SignInScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
-    var showSnackbar by remember { mutableStateOf(false) }
+    val showSnackbar = remember { mutableStateOf(false) }
     var snackbarMessage by remember { mutableStateOf("") }
 
     val auth = Firebase.auth
@@ -99,30 +103,21 @@ fun SignInScreen(navController: NavController) {
                                 val user = auth.currentUser
                                 navController.navigate("loginScreen")
                             } else {
-                                showSnackbar = true
+                                showSnackbar.value = true
                                 snackbarMessage = "Account creation failed"
                                 println(task.exception)
                             }
                         }
                 } else {
-                    showSnackbar = true
+                    showSnackbar.value = true
                     snackbarMessage = "Please fill in all fields"
                 }
             }
         ) {
             Text("Sing In")
         }
-        if (showSnackbar) {
-            Snackbar(
-                modifier = Modifier.align(Alignment.End),
-                action = {
-                    TextButton(onClick = { showSnackbar = false }) {
-                        Text("Dismiss")
-                    }
-                }
-            ) {
-                Text(snackbarMessage)
-            }
+        if (showSnackbar.value) {
+            AnimatedSnackbar(showSnackbar, snackbarMessage)
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(onClick = { navController.navigate("loginScreen") }) {
