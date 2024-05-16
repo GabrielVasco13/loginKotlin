@@ -3,7 +3,6 @@ package com.example.loginscreen.ui.theme.signUp
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import com.example.loginscreen.ui.theme.roxo
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
