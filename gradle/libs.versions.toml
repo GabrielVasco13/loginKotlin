@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.0-alpha04"
+agp = "8.4.0"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -11,6 +11,7 @@ composeBom = "2023.08.00"
 googleServices = "4.4.1"
 firebaseAuth = "22.3.1"
 navigationCompose = "2.7.7"
+material3Android = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
